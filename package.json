@@ -7,22 +7,18 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://gregs-hub.github.io/alyra-projet03-dApp/",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.6.2",
     "@openzeppelin/contracts": "^4.5.0",
     "@truffle/hdwallet-provider": "^2.0.5",
-    "dotenv": "^16.0.0",
-    "gh-pages": "^3.2.3"
+    "dotenv": "^16.0.0"
   },
   "devDependencies": {
     "solidity-coverage": "^0.7.20",
