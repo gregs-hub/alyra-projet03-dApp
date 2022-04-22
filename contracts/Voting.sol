@@ -60,7 +60,12 @@ contract Voting is Ownable {
     /// @dev New vote event
     /// @param voter Voter's address
     /// @param proposalId Proposal Id
-    event Voted (address voter, uint proposalId);
+    event Voted(address voter, uint proposalId);
+
+    /// @dev Constructor to add owner as a voter
+    constructor() Ownable() {
+        addVoter(msg.sender);
+    }
 
     /// @dev Modifier to check if current sender is registered as a voter
     modifier onlyVoters() {
@@ -84,10 +89,17 @@ contract Voting is Ownable {
         return proposalsArray[_id];
     }
 
+    /// @notice Get all proposals
+    /// @dev At any time, whitelisted voters can view the array of all proposals
+    /// @return Array of proposals
+    function getAllProposals() external onlyVoters view returns (Proposal[] memory) {
+        return proposalsArray;
+    }
+
     /// @notice Owner can add a new voter
     /// @dev Owner can add a new voter to the whitelist. Current status must be RegisteringVoters. Emits VoterRegistered
     /// @param _addr Voter's address
-    function addVoter(address _addr) external onlyOwner {
+    function addVoter(address _addr) public onlyOwner {
         require(workflowStatus == WorkflowStatus.RegisteringVoters, 'Voters registration is not open yet');
         require(voters[_addr].isRegistered != true, 'Already registered');
         voters[_addr].isRegistered = true;
@@ -107,14 +119,13 @@ contract Voting is Ownable {
         emit ProposalRegistered(proposalsArray.length-1);
     }
 
-
     /// @notice Voter can vote for a proposal
     /// @dev Whitelisted voters can vote for a unique proposal. Current status must be VotingSessionStarted. Emits Voted
     /// @param _id Proposal Id
     function setVote( uint _id) external onlyVoters {
         require(workflowStatus == WorkflowStatus.VotingSessionStarted, 'Voting session havent started yet');
         require(voters[msg.sender].hasVoted != true, 'You have already voted');
-        require(_id <= proposalsArray.length, 'Proposal not found');
+        require(_id < proposalsArray.length, 'Proposal not found');
         voters[msg.sender].votedProposalId = _id;
         voters[msg.sender].hasVoted = true;
         proposalsArray[_id].voteCount++;
