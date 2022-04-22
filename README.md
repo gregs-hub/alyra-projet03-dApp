@@ -1,24 +1,9 @@
 # alyra-projet03-dApp
+This project aims at creating and deploying a dApp for a voting smart contract in a small organization. The voters, all known by the organization, are registered by the administrator on a whitelist with their wallet address. Voters can submit proposals to the vote during the Proposal Registration phase. Voters can vote for a proposal during the Voting Session.
 
 **⚡️ Projet 03 - DApp for a voting contract in a small organization** <br />
-Text
+The dApp has been deployed tyo rinkeby Ethereum test network and transactions can be explored at this address
+https://rinkeby.etherscan.io/address/0x5123948f82ac218477b0ee4f4520ab08f8e459dc
 
-https://rinkeby.etherscan.io/address/0x0798d760c7801bc674b274808072eca41fcfc790
-
-Deploying 'Voting'
-   ------------------
-   > transaction hash:    0xb45342a0631f7efef990f5a9dadbdc6adad8cea8b5b6b30d0f51e7843bb63364
-   > Blocks: 1            Seconds: 17
-   > contract address:    0x5123948f82ac218477b0EE4f4520AB08F8E459dc
-   > block number:        10550184
-   > block timestamp:     1650653971
-   > account:             0x0798d760C7801bC674B274808072Eca41FCfC790
-   > balance:             0.094045302469035573
-   > gas used:            2381879 (0x245837)
-   > gas price:           2.500000013 gwei
-   > value sent:          0 ETH
-   > total cost:          0.005954697530964427 ETH
-
-   > Saving artifacts
-   -------------------------------------
-   > Total cost:     0.005954697530964427 ETH
+Website is deployed on githubpages
+https://gregs-hub.github.io/alyra-projet03-dApp/
